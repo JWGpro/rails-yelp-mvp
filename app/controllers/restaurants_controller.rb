@@ -3,12 +3,11 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @restaurant = Restaurant.new
   end
 
-  def show; end
-
-  def new
-    @restaurant = Restaurant.new
+  def show
+    @review = Review.new
   end
 
   def create
@@ -16,7 +15,8 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       redirect_to restaurant_path(@restaurant.id)
     else
-      render :new
+      @restaurants = Restaurant.all
+      render :index
     end
   end
 
