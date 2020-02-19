@@ -8,13 +8,11 @@
 
 Restaurant.destroy_all
 
-CATEGORIES = %w[chinese italian japanese french belgian]
-
 5.times do
   Restaurant.create(
     name: Faker::Ancient.primordial,
     address: Faker::Address.street_address,
-    category: CATEGORIES.sample,
+    category: Restaurant::CATEGORIES.sample,
     phone_number: Faker::PhoneNumber.phone_number
   )
 end
